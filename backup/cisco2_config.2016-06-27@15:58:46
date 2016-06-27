@@ -1,0 +1,1310 @@
+Building configuration...
+
+Current configuration with default configurations exposed : 35998 bytes
+!
+! Last configuration change at 15:58:06 UTC Mon Jun 27 2016
+!
+version 15.2
+downward-compatible-config 15.2
+no service log backtrace
+no service config
+no service exec-callback
+no service nagle
+service slave-log
+no service slave-coredump
+no service pad to-xot
+no service pad from-xot
+no service pad cmns
+service pad
+no service telnet-zeroidle
+no service tcp-keepalives-in
+no service tcp-keepalives-out
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+no service exec-wait
+no service linenumber
+no service internal
+no service scripting
+no service compress-config
+service prompt config
+no service old-slip-prompts
+no service hide-telnet-addresses
+no service pt-vty-logging
+no service disable-ip-fast-frag
+no service sequence-numbers
+service counters max age 0
+service alignment detection
+service alignment logging
+no service call-home
+service dhcp
+!
+hostname ********
+!
+boot-start-marker
+boot config 
+boot bootldr 
+boot-end-marker
+!
+shell processing
+!
+no logging discriminator
+logging exception 8192
+no logging count
+no logging message-counter log
+no logging message-counter debug
+logging message-counter syslog
+no logging snmp-authfail
+no logging userinfo
+logging buginf
+logging queue-limit 100
+logging queue-limit esm 0
+logging queue-limit trap 100
+logging buffered 8192 debugging
+logging reload message-limit 1000 notifications
+no logging persistent
+logging rate-limit console 10 except errors
+logging console guaranteed
+logging console debugging
+logging monitor debugging
+logging cns-events informational
+logging on
+enable password ********
+!
+spd extended-headroom 10
+spd headroom 100
+spd enable
+aaa new-model
+!
+!
+aaa authentication attempts login 3
+aaa accounting jitter maximum 300
+!
+ port 1645
+!
+!
+!
+ port 1700
+!
+aaa session-id common
+aaa memory threshold authentication reject 3
+aaa memory threshold accounting disable 2
+ppp hold-queue 64000
+ipc holdq threshold upper 0
+ipc holdq threshold lower 0
+ipc header-cache permanent 1000 100
+ipc buffers max-free 8
+ipc buffers min-free 1
+ipc buffers permanent 2
+process cpu extended history 12
+process cpu autoprofile hog
+cef table consistency-check IPv4 type scan-rib-ios count 1000 period 60
+cef table consistency-check IPv4 type scan-ios-rib count 1000 period 60
+no cef table consistency-check IPv4 data-checking
+no cef table consistency-check IPv4 error-message
+cef table consistency-check IPv4 auto-repair delay 10 holddown 300
+cef table consistency-check IPv6 type scan-ios-rib count 1000 period 60
+no cef table consistency-check IPv6 data-checking
+no cef table consistency-check IPv6 error-message
+cef table consistency-check IPv6 auto-repair delay 10 holddown 300
+cef table vrf tree IPv4 type MTRIE short-mask-protection 4 stride-pattern 8-8-8-8 hardware-api-notify off
+cef table vrf tree IPv6 type RTREE
+cef table output-chain build favor default
+cef table rate-monitor-period 5
+call-home
+ alert-group configuration
+ alert-group environment
+ alert-group inventory
+ alert-group syslog
+ rate-limit 20
+ profile "CiscoTAC-1"
+  no active
+  destination preferred-msg-format xml
+  destination message-size-limit 3145728
+  no destination transport-method http
+  destination transport-method email
+  destination address email callhome@********.com 
+  destination address http https://tools.********.com/its/service/oddce/services/DDCEService 
+  subscribe-to-alert-group environment severity minor 
+  subscribe-to-alert-group inventory
+  subscribe-to-alert-group syslog severity major pattern ".*"
+  subscribe-to-alert-group configuration periodic monthly 19 12:01
+  subscribe-to-alert-group inventory periodic monthly 19 11:46
+ standby redirect
+ standby bfd all-interfaces
+ standby sso
+ip subnet-zero
+ip source-route
+ip routing protocol purge interface
+ip routing
+no ip arp proxy disable
+ip arp queue 512
+ip arp incomplete retry 20
+ip arp incomplete entries 5000
+ip arp incomplete enable
+ip sticky-arp
+ip gratuitous-arps non-local
+no ip icmp rate-limit unreachable
+ip icmp redirect subnet
+ip spd queue max-threshold 74
+ip spd queue min-threshold 73
+ip verify drop-rate compute window 300
+ip verify drop-rate compute interval 30
+ip verify drop-rate notify hold-down 300
+!
+!
+!
+ip nbar port-map share-point tcp 443 80 
+ip nbar port-map smtp tcp 25 587 
+ip nbar port-map pop3 tcp 110 
+ip nbar port-map edonkey tcp 80 4662 
+ip nbar port-map sip udp 5060 
+ip nbar port-map sip tcp 5060 
+ip nbar port-map rtp udp 3478 
+ip nbar port-map rtp tcp 3478 
+ip nbar port-map webex-meeting udp 9000 
+ip nbar port-map webex-meeting tcp 443 
+ip nbar port-map rtsp tcp 80 554 8554 
+ip nbar port-map gnutella tcp 80 6346 6347 6348 6349 6355 5634 
+ip nbar port-map citrix tcp 2598 1494 
+ip nbar port-map nntp tcp 119 
+ip nbar port-map http tcp 80 
+ip nbar port-map custom-10 udp 
+ip nbar port-map custom-10 tcp 
+ip nbar port-map custom-09 udp 
+ip nbar port-map custom-09 tcp 
+ip nbar port-map custom-08 udp 
+ip nbar port-map custom-08 tcp 
+ip nbar port-map custom-07 udp 
+ip nbar port-map custom-07 tcp 
+ip nbar port-map custom-06 udp 
+ip nbar port-map custom-06 tcp 
+ip nbar port-map custom-05 udp 
+ip nbar port-map custom-05 tcp 
+ip nbar port-map custom-04 udp 
+ip nbar port-map custom-04 tcp 
+ip nbar port-map custom-03 udp 
+ip nbar port-map custom-03 tcp 
+ip nbar port-map custom-02 udp 
+ip nbar port-map custom-02 tcp 
+ip nbar port-map custom-01 udp 
+ip nbar port-map custom-01 tcp 
+ip nbar port-map aol-messenger-video udp 3478 
+ip nbar port-map aol-messenger-video tcp 80 3478 
+ip nbar port-map aol-messenger-audio udp 3478 
+ip nbar port-map aol-messenger-audio tcp 3478 
+ip nbar port-map adobe-connect tcp 443 80 
+ip nbar port-map sqlserver tcp 445 139 
+ip nbar port-map ms-update tcp 443 80 
+ip nbar port-map clearcase udp 111 371 2049 
+ip nbar port-map clearcase tcp 111 371 2049 
+ip nbar port-map kerberos udp 88 
+ip nbar port-map kerberos tcp 88 
+ip nbar port-map gotomypc tcp 443 80 
+ip nbar port-map vmware-view tcp 443 
+ip nbar port-map pcoip tcp 4172 
+ip nbar port-map vmware-vmotion tcp 8000 
+ip nbar port-map snmp udp 161 162 
+ip nbar port-map snmp tcp 161 162 1161 1162 
+ip nbar port-map ms-office-365 tcp 80 443 
+ip nbar port-map google-accounts tcp 443 
+ip nbar port-map active-directory udp 389 
+ip nbar port-map active-directory tcp 443 445 139 389 135 
+ip nbar port-map ldap udp 389 
+ip nbar port-map ldap tcp 389 
+ip nbar port-map netbios-ns udp 137 
+ip nbar port-map dmp tcp 7777 
+ip nbar port-map capwap-data udp 5247 
+ip nbar port-map capwap-control udp 5246 
+ip nbar port-map rhapsody tcp 443 80 
+ip nbar port-map activesync tcp 80 
+ip nbar port-map sip-tls tcp 5061 
+ip nbar port-map msn-messenger-video udp 3478 
+ip nbar port-map msn-messenger-video tcp 3478 
+ip nbar port-map tcpoverdns udp 53 
+ip nbar port-map tcpoverdns tcp 53 
+ip nbar port-map secondlife udp 5060 
+ip nbar port-map secondlife tcp 5060 443 80 
+ip nbar port-map vnc-http tcp 80 
+ip nbar port-map ms-sms tcp 80 2703 2702 2701 2704 
+ip nbar port-map ms-netlogon tcp 135 
+ip nbar port-map ms-win-dns tcp 135 
+ip nbar port-map ms-iis tcp 135 
+ip nbar port-map gtalk-video udp 3478 
+ip nbar port-map gtalk-video tcp 3478 80 
+ip nbar port-map gtalk-ft udp 3478 
+ip nbar port-map gtalk-ft tcp 3478 
+ip nbar port-map gtalk-voip udp 3478 
+ip nbar port-map gtalk-voip tcp 3478 80 
+ip nbar port-map gtalk udp 3478 
+ip nbar port-map gtalk tcp 3478 80 
+ip nbar port-map gtalk-chat tcp 5222 443 
+ip nbar port-map xmpp-client tcp 5222 
+ip nbar port-map livemeeting tcp 443 8057 
+ip nbar port-map gridftp tcp 2811 
+ip nbar port-map livestation tcp 443 80 
+ip nbar port-map ********-ip-camera tcp 554 8554 
+ip nbar port-map viber udp 5243 
+ip nbar port-map viber tcp 5242 4244 
+ip nbar port-map stun-nat udp 3478 
+ip nbar port-map stun-nat tcp 3478 
+ip nbar port-map megavideo tcp 80 
+ip nbar port-map netflix tcp 443 80 
+ip nbar port-map ghostsurf tcp 443 
+ip nbar port-map ssl tcp 443 
+ip nbar port-map openvpn tcp 443 
+ip nbar port-map gmail tcp 443 80 
+ip nbar port-map ms-wbt tcp 3389 
+ip nbar port-map networking-gnutella udp 6346 6347 6348 
+ip nbar port-map dns udp 53 
+ip nbar port-map dns tcp 53 
+ip nbar port-map rtmpt tcp 80 
+ip nbar port-map isakmp udp 4500 500 
+ip nbar port-map aol-protocol tcp 5190 
+ip nbar port-map yahoo-voip-over-sip udp 5060 
+ip nbar port-map yahoo-voip-over-sip tcp 5060 
+ip nbar port-map yahoo-voip-messenger udp 3478 
+ip nbar port-map yahoo-voip-messenger tcp 3478 
+ip nbar port-map icq tcp 80 
+ip nbar port-map fring tcp 80 
+ip nbar port-map teredo-ipv6-tunneled udp 3544 3545 
+ip nbar port-map tunnel-http tcp 80 
+ip nbar port-map songsari tcp 80 
+ip nbar port-map babelgum tcp 80 443 
+ip nbar port-map webthunder tcp 80 
+ip nbar port-map pando tcp 80 443 
+ip nbar port-map baidu-movie tcp 80 
+ip nbar port-map google-earth tcp 80 
+ip nbar port-map sling tcp 80 
+ip nbar port-map napster tcp 80 
+ip nbar port-map itunes tcp 80 
+ip nbar port-map ntp udp 123 
+ip nbar port-map pptp tcp 1723 
+ip nbar port-map soribada tcp 80 
+ip nbar port-map radius udp 1813 1812 
+ip nbar port-map manolito udp 41170 
+ip nbar port-map ayiya-ipv6-tunneled udp 5072 
+ip nbar port-map ayiya-ipv6-tunneled tcp 5072 
+ip nbar port-map video-over-http tcp 80 
+ip nbar port-map binary-over-http tcp 80 
+ip nbar port-map audio-over-http tcp 80 
+ip nbar port-map flashmyspace tcp 80 
+ip nbar port-map flashyahoo tcp 80 
+ip nbar port-map flash-video tcp 80 
+ip nbar port-map sopcast tcp 80 
+ip nbar port-map telepresence-control tcp 5060 
+ip nbar port-map blizwow udp 3724 
+ip nbar port-map blizwow tcp 3724 
+ip nbar port-map skype udp 53 
+ip nbar port-map skype tcp 53 443 80 
+ip nbar port-map irc tcp 80 
+ip nbar port-map imap tcp 143 220 
+ip nbar port-map realmedia tcp 554 8554 443 80 
+ip nbar port-map youtube tcp 554 8554 80 
+ip nbar port-map ********-phone udp 5060 
+ip nbar port-map ********-phone tcp 5060 2000 2001 2002 
+ip nbar port-map cifs tcp 445 139 
+ip nbar port-map aol-messenger tcp 80 1080 443 5190 
+ip nbar port-map yahoo-messenger tcp 1080 80 119 5050 5101 
+ip nbar port-map ms-live-accounts tcp 443 
+ip nbar port-map msn-messenger tcp 1863 1080 80 
+ip nbar port-map fix tcp 443 
+ip nbar port-map directconnect tcp 80 411 412 413 
+ip nbar port-map bittorrent udp 3724 
+ip nbar port-map bittorrent tcp 80 1080 3724 6969 6881 6882 6883 6884 6885 6886 6887 6888 6889 
+ip nbar port-map rtcp udp 3478 
+ip nbar port-map rtcp tcp 3478 
+ip nbar port-map skinny tcp 2000 2001 2002 
+ip nbar port-map mgcp udp 2427 2727 
+ip nbar port-map mgcp tcp 2427 2428 2727 
+ip nbar port-map dhcp udp 67 68 
+ip nbar port-map nfs udp 111 371 2049 
+ip nbar port-map nfs tcp 111 371 2049 
+ip nbar port-map sunrpc udp 111 371 2049 
+ip nbar port-map sunrpc tcp 111 371 2049 
+ip nbar port-map netshow tcp 1755 
+ip nbar port-map vdolive tcp 7000 
+ip nbar port-map exchange tcp 135 
+ip nbar port-map ms-rpc tcp 135 
+ip nbar port-map tftp udp 69 
+ip nbar port-map socks tcp 1080 
+ip nbar port-map ftp tcp 21 21000 
+ip nbar resources system 30 11352 116
+ip dhcp relay information policy replace
+ip dhcp relay information check
+ip dhcp use class
+ip dhcp use vrf connected
+ip dhcp binding cleanup interval 120
+ip dhcp compatibility suboption link-selection ********
+ip dhcp conflict logging
+ip dhcp ping packets 2
+ip dhcp ping timeout 500
+!
+!
+!
+ip flow-cache entries 65536
+ip flow-cache timeout inactive 15
+ip flow-cache timeout active 30
+ip bootp server
+no ip domain round-robin
+ip domain retry 2
+ip domain timeout 3
+no ip domain lookup recursive
+no ip domain lookup
+ip domain lookup nsap
+ip domain name test
+ip domain multicast in-addr.arpa
+ip domain recursive retry 10
+no ip domain recursive allow-soa
+no ip hostname strict
+ip mfib
+ip sap cache-timeout 1440
+ip multicast route-limit 2147483647
+ip pgm host ttl 255
+ip pgm host stream-type apdu
+ip pgm host nak-gen-ivl 60000
+ip pgm host nak-rb-ivl 500
+ip pgm host nak-rpt-ivl 2000
+ip pgm host nak-rdata-ivl 2000
+ip pgm host rx-buffer-mgmt minimum
+ip pgm host tpdu-size 1400
+ip pgm host ihb-min 1000
+ip pgm host ihb-max 10000 
+ip pgm host join 0
+ip pgm host spm-ambient-ivl 6000
+ip pgm host txw-adv-secs 6000
+ip pgm host txw-adv-timeout-max 3600000
+ip pgm host txw-rte 16384
+ip pgm host txw-secs 30000
+ip pgm host ncf-max 4294967295
+ip pgm host spm-rpt-ivl 3000
+ip pgm host tx-buffer-mgmt return
+ip pgm host txw-adv-method time
+ip pgm router elimination-interval 2
+ip subscriber timer clear-dangling 900
+ip dhcp-server query lease retries 2
+ip dhcp-server query lease timeout 10
+ ip dhcp-client broadcast-flag
+ip dhcp-client default-router distance 254
+ip accounting-threshold 512
+ip cef optimize neighbor resolution
+ip cef
+no ip cef accounting 
+ip cef load-sharing algorithm universal 4D62666E
+ip igmp ssm-map query dns
+no login delay
+ipv6 hop-limit 64
+ipv6 icmp error-interval 100 10
+ipv6 nd cache expire 14400
+ipv6 nd nsf convergence 120
+ipv6 nd nsf throttle 512
+ipv6 nd nsf dad suppress 60
+ipv6 nd nud limit 256 refresh 10
+ipv6 nd reachable-time 0
+ipv6 nd ns-interval 0
+ipv6 nd resolution data limit 16
+ipv6 nd dad time 0
+ipv6 traffic interface-statistics
+ipv6 mfib
+ipv6 dhcp-relay trust-all
+no ipv6 dhcp-relay option vpn
+ipv6 dhcp ping packets 0
+ipv6 dhcp iapd-route-add
+no ipv6 dhcp iana-route-add
+no ipv6 dhcp server vrf enable
+ipv6 multicast multipath
+ipv6 multicast rpf use-bgp
+ipv6 spd queue max-threshold 74
+ipv6 spd queue min-threshold 73
+ipv6 cef optimize neighbor resolution
+no ipv6 cef
+ipv6 cef load-sharing algorithm universal 4D62666E
+l2tp tunnel l2tpv3 accounting headers
+nmsp notification interval location 30
+ntp max-associations 100
+!
+!
+subscriber policy recording profile user
+subscriber policy recording profile service
+subscriber policy recording rules
+subscriber policy recording rules limit 64
+no subscriber policy format_option82_for_cats
+kerberos timeout 15
+kerberos retry 4
+kerberos processes 1
+mpls label mode all-vrfs protocol all-afs per-prefix
+mpls label range 16 100000
+mpls ip propagate-ttl
+mpls ip
+mpls ldp backoff 15 120
+mpls ldp logging neighbor-changes
+mpls ldp logging password configuration
+mpls ldp logging password rollover
+mpls ldp graceful-restart timers neighbor-liveness 120
+mpls ldp graceful-restart timers max-recovery 120
+mpls ldp graceful-restart timers forwarding-holding 600
+mpls ldp holdtime 180
+mpls ldp discovery hello interval 5
+mpls ldp discovery hello holdtime 15
+mpls ldp discovery targeted-hello interval 10
+mpls ldp discovery targeted-hello holdtime 90
+mpls ldp maxhops 255
+mpls mldp forwarding recursive
+mpls mldp path multipath upstream
+mpls mldp path multipath downstream
+mpls mldp
+mpls traffic-eng link-management timers periodic-flooding 60
+mpls traffic-eng link-management timers bandwidth-hold 15
+mpls traffic-eng reoptimize timers frequency 3600
+mpls traffic-eng reoptimize timers delay installation 3
+mpls traffic-eng reoptimize timers delay cleanup 10
+mpls traffic-eng auto-bw timers frequency 300
+mpls traffic-eng path-selection metric te
+mpls oam
+ echo revision 4
+ echo vendor-extension
+no mpls export vpnv4 prefixes
+no mpls export interval
+no mpls discovery vpn interval
+no mpls discovery vpn next-hop
+clns configuration-time 60
+clns holding-time 300
+clns packet-lifetime 64
+clns security pass-through
+no clns want-erpdu
+isis display delimiter return 1
+frame-relay address registration auto-address
+multilink virtual-template 0
+multilink bundle-name authenticated
+device-sensor notify new-tlvs
+scripting tcl low-memory 91864865
+no virtual-template subinterface
+no virtual-template snmp
+!
+crypto pki crl cache size 64
+!
+memory check-interval 60
+memory statistics history table 24
+memory validate-checksum 60
+memory lite
+memory reserve console 0 
+memory chunk siblings threshold 10000
+file prompt alert
+file verify auto
+location prefer static weight 0
+location prefer lldp-med weight 2
+!
+!
+!
+!
+!
+username ******** password 0 ********
+crypto engine software ipsec
+crypto ikev2 authorization policy default
+ route set interface
+ route accept any
+!
+crypto ikev2 proposal default
+ encryption aes-cbc-256 aes-cbc-192 aes-cbc-128
+ integrity sha512 sha384 sha256 sha1 md5
+ group 5 2
+!
+crypto ikev2 policy default
+ match fvrf any
+ proposal default
+!
+crypto ikev2 nat keepalive 0
+crypto ikev2 diagnose error 50
+crypto ikev2 dpd 0 0 periodic
+crypto ikev2 limit max-in-negotation-sa 40
+crypto ikev2 limit max-sa 0
+crypto ikev2 window 5
+crypto ikev2 fragmentation mtu 576
+!
+process-max-time 200
+!
+no ip finger 
+no ip tcp selective-ack
+no ip tcp timestamp
+ip tcp delayed-ack
+ip tcp chunk-size 0
+ip tcp mss 0
+ip tcp window-size 4128
+ip tcp queuemax 20
+ip tcp synwait-time 5
+no ip tcp path-mtu-discovery
+ip tcp async-mobility server
+ip tcp intercept fast
+ip tcp intercept connection-timeout 86400
+ip tcp intercept finrst-timeout 5
+ip tcp intercept watch-timeout 30
+ip tcp intercept max-incomplete low 900
+ip tcp intercept max-incomplete high 1100
+ip tcp intercept one-minute low 900
+ip tcp intercept one-minute high 1100
+ip tcp intercept mode intercept
+ip tcp intercept drop-mode oldest
+ip telnet tos C0
+ip telnet quiet
+ip telnet hidden hostnames
+ip telnet hidden addresses
+no ip telnet comport enable
+ip telnet comport flow level 16
+ip telnet comport receive window 4128
+ip telnet comport disconnect delay 0
+ip ftp passive
+no ip tftp claim-netascii
+ip tftp blocksize 512
+ip ssh time-out 120
+ip ssh authentication-retries 3
+ip ssh break-string ~break
+ip ssh version 2
+ip ssh dh min size 1024
+! 
+crypto isakmp aggressive-mode disable
+crypto ipsec optional retry 300
+!
+crypto ipsec security-association lifetime kilobytes 4608000
+crypto ipsec security-association lifetime seconds 3600
+no crypto ipsec security-association replay disable
+crypto ipsec security-association replay window-size 64
+crypto ipsec security-association dummy
+!
+crypto ipsec transform-set default esp-aes esp-sha-hmac 
+ mode transport
+crypto ipsec nat-transparency udp-encapsulation
+!
+crypto ipsec profile default
+ set security-association lifetime kilobytes 4608000
+ set security-association lifetime seconds 3600
+ no set security-association idle-time
+ no set security-association replay window-size 
+ set security-association dummy
+!
+!
+crypto call admission limit ike sa 0
+crypto call admission limit ike in-negotiation-sa 1000
+crypto call admission limit ipsec sa 0
+crypto mib ipsec flowmib history tunnel size 200
+crypto mib ipsec flowmib history failure size 200
+!
+buffers element permanent 500
+buffers element minimum 100
+buffers header permanent 256
+buffers header max-free 1024
+buffers header min-free 256
+buffers header initial 0
+buffers fastswitching permanent 512
+buffers fastswitching max-free 512
+buffers fastswitching min-free 0
+buffers fastswitching initial 0
+buffers small permanent 50
+buffers small max-free 150
+buffers small min-free 20
+buffers small initial 0
+buffers middle permanent 25
+buffers middle max-free 150
+buffers middle min-free 10
+buffers middle initial 0
+buffers big permanent 50
+buffers big max-free 150
+buffers big min-free 5
+buffers big initial 0
+buffers verybig permanent 10
+buffers verybig max-free 100
+buffers verybig min-free 0
+buffers verybig initial 0
+buffers large permanent 0
+buffers large max-free 10
+buffers large min-free 0
+buffers large initial 0
+buffers huge permanent 0
+buffers huge max-free 4
+buffers huge min-free 0
+buffers huge size 18024
+buffers huge initial 0
+no buffers tune automatic
+buffers FastEthernet0/0 permanent 400
+buffers FastEthernet0/0 max-free 400
+buffers FastEthernet0/0 min-free 0
+buffers FastEthernet0/0 initial 0
+buffers FastEthernet1/0 permanent 400
+buffers FastEthernet1/0 max-free 400
+buffers FastEthernet1/0 min-free 0
+buffers FastEthernet1/0 initial 0
+buffers FastEthernet2/0 permanent 400
+buffers FastEthernet2/0 max-free 400
+buffers FastEthernet2/0 min-free 0
+buffers FastEthernet2/0 initial 0
+buffers FastEthernet3/0 permanent 400
+buffers FastEthernet3/0 max-free 400
+buffers FastEthernet3/0 min-free 0
+buffers FastEthernet3/0 initial 0
+buffers FastEthernet4/0 permanent 400
+buffers FastEthernet4/0 max-free 400
+buffers FastEthernet4/0 min-free 0
+buffers FastEthernet4/0 initial 0
+!
+!
+!
+interface Loopback0
+ mtu 1514
+ ip address 2.2.2.2 255.255.255.0
+ ip redirects
+ ip unreachables
+ ip proxy-arp
+ ip mtu 1514
+ ip mfib forwarding input
+ ip mfib forwarding output
+ ip mfib cef input
+ ip mfib cef output
+ ip pim dr-priority 1
+ ip pim query-interval 30
+ ip cef accounting non-recursive internal
+ ip load-sharing per-destination
+ ip route-cache cef
+ ip route-cache
+ ip split-horizon
+ ip igmp last-member-query-interval 1000
+ ip igmp last-member-query-count 2
+ ip igmp query-max-response-time 10
+ ip igmp version 2
+ ip igmp query-interval 60
+ ip igmp tcn query count 2
+ ip igmp tcn query interval 10
+ ip ospf resync-timeout 40
+ ip ospf dead-interval 40
+ ip ospf hello-interval 10
+ ip ospf retransmit-interval 5
+ ip ospf transmit-delay 1
+ no ip ospf flood-reduction
+ no ip ospf demand-circuit
+ no ip ospf mtu-ignore
+ no ip ospf database-filter all out
+ ip ospf cost 1
+ load-interval 300
+ ipv6 nd reachable-time 0
+ ipv6 nd ns-interval 0
+ ipv6 nd prefix framed-ipv6-prefix
+ ipv6 nd nud igp
+ ipv6 nd ra lifetime 1800
+ ipv6 nd ra interval 200
+  ipv6 redirects
+  ipv6 unreachables
+ ipv6 mfib forwarding input
+ ipv6 mfib forwarding output
+ ipv6 mfib cef input
+ ipv6 mfib cef output
+ snmp trap link-status
+ mpls mtu 1514
+ mpls mldp
+ no arp arpa
+ arp timeout 0
+   clns route-cache
+ hold-queue 75 in
+ hold-queue 0 out
+ no bgp-policy accounting input
+ no bgp-policy accounting output
+ no bgp-policy accounting input source
+ no bgp-policy accounting output source
+ no bgp-policy source ip-prec-map
+ no bgp-policy source ip-qos-map
+ no bgp-policy destination ip-prec-map
+ no bgp-policy destination ip-qos-map
+!
+interface FastEthernet0/0
+ mtu 1500
+ ip address 192.168.128.3 255.255.255.0
+ ip redirects
+ ip unreachables
+ ip proxy-arp
+ ip mtu 1500
+ ip mfib forwarding input
+ ip mfib forwarding output
+ ip mfib cef input
+ ip mfib cef output
+ ip pim dr-priority 1
+ ip pim query-interval 30
+ ip cef accounting non-recursive internal
+ ip load-sharing per-destination
+ ip route-cache cef
+ ip route-cache
+ ip split-horizon
+ ip igmp last-member-query-interval 1000
+ ip igmp last-member-query-count 2
+ ip igmp query-max-response-time 10
+ ip igmp version 2
+ ip igmp query-interval 60
+ ip igmp tcn query count 2
+ ip igmp tcn query interval 10
+ ip ospf network broadcast
+ ip ospf resync-timeout 40
+ ip ospf dead-interval 40
+ ip ospf hello-interval 10
+ ip ospf priority 1
+ ip ospf retransmit-interval 5
+ ip ospf transmit-delay 1
+ no ip ospf flood-reduction
+ no ip ospf demand-circuit
+ no ip ospf mtu-ignore
+ no ip ospf database-filter all out
+ ip ospf cost 1
+ load-interval 300
+ duplex full
+ no medium p2p
+ ipv6 nd reachable-time 0
+ ipv6 nd ns-interval 0
+ ipv6 nd dad attempts 1
+ ipv6 nd prefix framed-ipv6-prefix
+ ipv6 nd nud igp
+ ipv6 nd ra lifetime 1800
+ ipv6 nd ra interval 200
+  ipv6 redirects
+  ipv6 unreachables
+ ipv6 mfib forwarding input
+ ipv6 mfib forwarding output
+ ipv6 mfib cef input
+ ipv6 mfib cef output
+ snmp trap link-status
+ mpls mtu 1500
+ mpls mldp
+ arp arpa
+ arp timeout 14400
+   clns route-cache
+ hold-queue 75 in
+ hold-queue 0 out
+ no bgp-policy accounting input
+ no bgp-policy accounting output
+ no bgp-policy accounting input source
+ no bgp-policy accounting output source
+ no bgp-policy source ip-prec-map
+ no bgp-policy source ip-qos-map
+ no bgp-policy destination ip-prec-map
+ no bgp-policy destination ip-qos-map
+!
+interface FastEthernet1/0
+ mtu 1500
+ ip address 192.168.101.3 255.255.255.0
+ ip redirects
+ ip unreachables
+ ip proxy-arp
+ ip mtu 1500
+ ip mfib forwarding input
+ ip mfib forwarding output
+ ip mfib cef input
+ ip mfib cef output
+ ip pim dr-priority 1
+ ip pim query-interval 30
+ ip cef accounting non-recursive internal
+ ip load-sharing per-destination
+ ip route-cache cef
+ ip route-cache
+ ip split-horizon
+ ip igmp last-member-query-interval 1000
+ ip igmp last-member-query-count 2
+ ip igmp query-max-response-time 10
+ ip igmp version 2
+ ip igmp query-interval 60
+ ip igmp tcn query count 2
+ ip igmp tcn query interval 10
+ ip ospf network broadcast
+ ip ospf resync-timeout 40
+ ip ospf dead-interval 40
+ ip ospf hello-interval 10
+ ip ospf priority 1
+ ip ospf retransmit-interval 5
+ ip ospf transmit-delay 1
+ no ip ospf flood-reduction
+ no ip ospf demand-circuit
+ no ip ospf mtu-ignore
+ no ip ospf database-filter all out
+ ip ospf cost 1
+ load-interval 300
+ duplex full
+ no medium p2p
+ ipv6 nd reachable-time 0
+ ipv6 nd ns-interval 0
+ ipv6 nd dad attempts 1
+ ipv6 nd prefix framed-ipv6-prefix
+ ipv6 nd nud igp
+ ipv6 nd ra lifetime 1800
+ ipv6 nd ra interval 200
+  ipv6 redirects
+  ipv6 unreachables
+ ipv6 mfib forwarding input
+ ipv6 mfib forwarding output
+ ipv6 mfib cef input
+ ipv6 mfib cef output
+ snmp trap link-status
+ mpls mtu 1500
+ mpls mldp
+ arp arpa
+ arp timeout 14400
+   clns route-cache
+ hold-queue 75 in
+ hold-queue 0 out
+ no bgp-policy accounting input
+ no bgp-policy accounting output
+ no bgp-policy accounting input source
+ no bgp-policy accounting output source
+ no bgp-policy source ip-prec-map
+ no bgp-policy source ip-qos-map
+ no bgp-policy destination ip-prec-map
+ no bgp-policy destination ip-qos-map
+!
+interface FastEthernet2/0
+ mtu 1500
+ no ip address
+ ip redirects
+ ip unreachables
+ ip proxy-arp
+ ip mtu 1500
+ ip mfib forwarding input
+ ip mfib forwarding output
+ ip mfib cef input
+ ip mfib cef output
+ ip pim dr-priority 1
+ ip pim query-interval 30
+ ip cef accounting non-recursive internal
+ ip load-sharing per-destination
+ ip route-cache cef
+ ip route-cache
+ ip split-horizon
+ ip igmp last-member-query-interval 1000
+ ip igmp last-member-query-count 2
+ ip igmp query-max-response-time 10
+ ip igmp version 2
+ ip igmp query-interval 60
+ ip igmp tcn query count 2
+ ip igmp tcn query interval 10
+ load-interval 300
+ shutdown
+ duplex full
+ no medium p2p
+ ipv6 nd reachable-time 0
+ ipv6 nd ns-interval 0
+ ipv6 nd dad attempts 1
+ ipv6 nd prefix framed-ipv6-prefix
+ ipv6 nd nud igp
+ ipv6 nd ra lifetime 1800
+ ipv6 nd ra interval 200
+  ipv6 redirects
+  ipv6 unreachables
+ ipv6 mfib forwarding input
+ ipv6 mfib forwarding output
+ ipv6 mfib cef input
+ ipv6 mfib cef output
+ snmp trap link-status
+ mpls mtu 1500
+ mpls mldp
+ arp arpa
+ arp timeout 14400
+   clns route-cache
+ hold-queue 75 in
+ hold-queue 0 out
+ no bgp-policy accounting input
+ no bgp-policy accounting output
+ no bgp-policy accounting input source
+ no bgp-policy accounting output source
+ no bgp-policy source ip-prec-map
+ no bgp-policy source ip-qos-map
+ no bgp-policy destination ip-prec-map
+ no bgp-policy destination ip-qos-map
+!
+interface FastEthernet3/0
+ mtu 1500
+ no ip address
+ ip redirects
+ ip unreachables
+ ip proxy-arp
+ ip mtu 1500
+ ip mfib forwarding input
+ ip mfib forwarding output
+ ip mfib cef input
+ ip mfib cef output
+ ip pim dr-priority 1
+ ip pim query-interval 30
+ ip cef accounting non-recursive internal
+ ip load-sharing per-destination
+ ip route-cache cef
+ ip route-cache
+ ip split-horizon
+ ip igmp last-member-query-interval 1000
+ ip igmp last-member-query-count 2
+ ip igmp query-max-response-time 10
+ ip igmp version 2
+ ip igmp query-interval 60
+ ip igmp tcn query count 2
+ ip igmp tcn query interval 10
+ load-interval 300
+ shutdown
+ duplex full
+ no medium p2p
+ ipv6 nd reachable-time 0
+ ipv6 nd ns-interval 0
+ ipv6 nd dad attempts 1
+ ipv6 nd prefix framed-ipv6-prefix
+ ipv6 nd nud igp
+ ipv6 nd ra lifetime 1800
+ ipv6 nd ra interval 200
+  ipv6 redirects
+  ipv6 unreachables
+ ipv6 mfib forwarding input
+ ipv6 mfib forwarding output
+ ipv6 mfib cef input
+ ipv6 mfib cef output
+ snmp trap link-status
+ mpls mtu 1500
+ mpls mldp
+ arp arpa
+ arp timeout 14400
+   clns route-cache
+ hold-queue 75 in
+ hold-queue 0 out
+ no bgp-policy accounting input
+ no bgp-policy accounting output
+ no bgp-policy accounting input source
+ no bgp-policy accounting output source
+ no bgp-policy source ip-prec-map
+ no bgp-policy source ip-qos-map
+ no bgp-policy destination ip-prec-map
+ no bgp-policy destination ip-qos-map
+!
+interface FastEthernet4/0
+ mtu 1500
+ no ip address
+ ip redirects
+ ip unreachables
+ ip proxy-arp
+ ip mtu 1500
+ ip mfib forwarding input
+ ip mfib forwarding output
+ ip mfib cef input
+ ip mfib cef output
+ ip pim dr-priority 1
+ ip pim query-interval 30
+ ip cef accounting non-recursive internal
+ ip load-sharing per-destination
+ ip route-cache cef
+ ip route-cache
+ ip split-horizon
+ ip igmp last-member-query-interval 1000
+ ip igmp last-member-query-count 2
+ ip igmp query-max-response-time 10
+ ip igmp version 2
+ ip igmp query-interval 60
+ ip igmp tcn query count 2
+ ip igmp tcn query interval 10
+ load-interval 300
+ shutdown
+ duplex full
+ no medium p2p
+ ipv6 nd reachable-time 0
+ ipv6 nd ns-interval 0
+ ipv6 nd dad attempts 1
+ ipv6 nd prefix framed-ipv6-prefix
+ ipv6 nd nud igp
+ ipv6 nd ra lifetime 1800
+ ipv6 nd ra interval 200
+  ipv6 redirects
+  ipv6 unreachables
+ ipv6 mfib forwarding input
+ ipv6 mfib forwarding output
+ ipv6 mfib cef input
+ ipv6 mfib cef output
+ snmp trap link-status
+ mpls mtu 1500
+ mpls mldp
+ arp arpa
+ arp timeout 14400
+   clns route-cache
+ hold-queue 75 in
+ hold-queue 0 out
+ no bgp-policy accounting input
+ no bgp-policy accounting output
+ no bgp-policy accounting input source
+ no bgp-policy accounting output source
+ no bgp-policy source ip-prec-map
+ no bgp-policy source ip-qos-map
+ no bgp-policy destination ip-prec-map
+ no bgp-policy destination ip-qos-map
+!
+router ospf 100
+ priority 64
+ queue-depth update 200
+ queue-depth hello unlimited
+ compatible rfc1583
+ no compatible rfc1587
+ no interface-id snmp-if-index
+ no ignore lsa mospf
+ no ispf
+ event-log size 1000
+ log-adjacency-changes
+ discard-route external 254 internal 110
+ no local-rib-criteria
+ auto-cost reference-bandwidth 100
+ limit retransmissions dc 24 non-dc 24
+ no shutdown
+ no prefix-suppression
+ nsf ******** helper
+ nsf ietf helper
+ capability opaque
+ capability lls
+ capability transit
+ no area 0 authentication
+ area 0 default-cost 1
+ timers throttle spf 5000 10000 10000
+ timers throttle lsa 0 5000 5000
+ timers lsa arrival 1000
+ timers pacing lsa-group 240
+ timers pacing flood 33
+ timers pacing retransmission 66
+ network 2.2.2.0 0.0.0.255 area 0
+ network 192.168.101.0 0.0.0.255 area 0
+ network 192.168.128.0 0.0.0.255 area 0
+ maximum-paths 4
+ default-metric 20
+ distance 110
+ no bfd all-interfaces
+!
+ip classless
+ip forward-protocol nd
+!
+!
+no ip http server
+ip http port 80
+ip http authentication enable
+no ip http secure-server
+ip http secure-port 443
+ip http secure-active-session-modules all
+ip http max-connections 5
+ip http timeout-policy idle 180 life 180 requests 1
+ip http active-session-modules all
+ip http client cache memory pool 100
+ip http client cache memory file 2
+ip http client cache ager interval 5
+ip http client connection timeout 10
+ip http client connection retry 1
+ip http client connection idle timeout 30
+ip http client response timeout 30
+ip http path 
+ip pim dm-fallback
+ip pim autorp
+ip pim bidir-offer-interval 100 msec
+ip pim bidir-offer-limit 3
+ip pim v1-rp-reachability
+ip pim log-neighbor-changes
+ip msdp timer 30
+ip route static adjust-time 60
+ip route static inter-vrf
+no ip ospf name-lookup
+ip rsvp authentication type md5
+ip rsvp authentication lifetime 00:30:00
+ip rsvp pq-profile 12288 592 110
+ip rsvp signalling initial-retransmit-delay 1000
+ip rsvp signalling refresh reduction ack-delay 250
+ip rsvp signalling refresh interval 30000
+ip rsvp signalling refresh misses 4
+no ip identd
+no ip access-list helper egress check
+!
+ ip prefix-list sequence-number
+ timeout 900
+ip sla low-memory 84641752
+ip sla server twamp
+ port 862
+ timer inactivity 900
+service-routing capabilities-manager
+logging esm config
+logging history size 1
+logging history warnings
+no logging alarm
+logging trap informational
+logging delimiter tcp
+no logging origin-id
+logging facility local7
+no logging source-interface
+logging server-arp
+cdp run
+terminal-queue entry-retry-interval 60
+!
+ ipv6 prefix-list sequence-number
+mop device-code ********
+mop retransmit-timer 4
+mop retries 8
+no route-tag notation dotted-decimal
+snmp mib event sample minimum 60
+snmp mib event sample instance maximum 0
+snmp mib expression delta minimum 1
+snmp mib expression delta wildcard maximum 0
+ snmp mib nhrp
+snmp mib notification-log globalsize 500
+snmp mib notification-log globalageout 15
+!
+tacacs-server cache expiry 24 enforce hours
+radius-server attribute 77 include-in-acct-req
+radius-server attribute 77 include-in-access-req
+radius-server attribute 11 default direction out
+radius-server attribute nas-port format a
+radius-server attribute 31 mac format default lower-case
+radius-server cache expiry 24 enforce hours
+radius-server transaction max-tries 8
+radius-server retransmit 3
+radius-server timeout 5
+radius-server ipc-limit in 10
+radius-server ipc-limit done 10
+!
+ipv6 access-list log-update threshold 2147483647
+!
+control-plane
+!
+diameter timer connection 30
+diameter timer watchdog 30
+diameter timer transaction 30
+alias atm-vc-config vbr vbr-nrt
+alias exec h help
+alias exec lo logout
+alias exec p ping
+alias exec r resume
+alias exec s show
+alias exec u undebug
+alias exec un undebug
+alias exec w where
+no configuration mode exclusive
+parser cache
+parser config partition
+parser command serializer
+parser maximum utilization 100
+parser maximum latency 40
+default-value exec-character-bits 7
+default-value special-character-bits 7
+default-value data-character-bits 8
+!
+line con 0
+ motd-banner
+ exec-banner
+ exec-timeout 0 0
+ timeout login response 30
+ privilege level 15
+ flush-at-activation
+ activation-character 13
+ logout-warning 20
+ absolute-timeout 0
+ logging synchronous
+ data-character-bits 8
+ exec-character-bits 7
+ special-character-bits 7
+ domain-lookup
+ exec
+ length 24
+ width 80
+ history size 10
+ history
+  editing
+ monitor
+ escape-character soft DEFAULT
+ escape-character DEFAULT
+ autohangup session-timeout
+ stopbits 1
+ start-character 17
+ stop-character 19
+ speed 9600
+line aux 0
+ motd-banner
+ exec-banner
+ exec-timeout 0 0
+ timeout login response 30
+ privilege level 15
+ flush-at-activation
+ activation-character 13
+ logout-warning 20
+ absolute-timeout 0
+ logging synchronous
+ modem answer-timeout 15
+ modem dtr-delay 5
+ data-character-bits 8
+ exec-character-bits 7
+ special-character-bits 7
+ domain-lookup
+ exec
+ length 24
+ width 80
+ history size 10
+ history
+  editing
+ monitor
+ escape-character soft DEFAULT
+ escape-character DEFAULT
+ autohangup session-timeout
+ callback forced-wait 4
+ callback nodsr-wait 5000
+ databits 8
+ stopbits 1
+ start-character 17
+ stop-character 19
+ speed 9600
+line vty 0 4
+ motd-banner
+ exec-banner
+ exec-timeout 10 0
+ timeout login response 30
+ privilege level 1
+ flush-at-activation
+ activation-character 13
+ logout-warning 20
+ absolute-timeout 0
+ data-character-bits 8
+ exec-character-bits 7
+ special-character-bits 7
+ domain-lookup
+ exec
+ length 24
+ width 80
+ history size 10
+ history
+  editing
+ monitor
+ escape-character soft DEFAULT
+ escape-character DEFAULT
+ autohangup session-timeout
+ start-character 17
+ stop-character 19
+!
+exception-slave core-file ********-core
+exception-slave crashinfo-file ********-crashinfo
+exception-slave protocol tftp
+exception protocol tftp
+exception region-size 131072
+exception data-corruption buffer truncate
+exception data-corruption buffer log
+exception crashinfo file bootflash:crashinfo
+exception crashinfo buffersize 32
+exception crashinfo maximum files 1
+no exception crashinfo dump garbage-detector
+monitor event-trace stacktrace
+no monitor event-trace sequence-number
+monitor event-trace timestamps datetime msec
+monitor event-trace eigrp perf-events rate-limiting 1
+scheduler max-task-time 2000
+scheduler process-watchdog normal
+ntp maxdistance 8
+no ntp update-calendar
+cns id hostname 
+cns id hostname event
+cns id hostname image
+cns image retry 60
+netconf max-sessions 4
+netconf lock-time 10
+netconf max-message 0
+wsma id hostname
+event manager scheduler script thread class default number 1
+event manager scheduler applet thread class default number 5
+event manager scheduler call-home thread class default number 32
+event manager scheduler shell thread class default number 1
+event manager scheduler shell thread class Z number 1
+!
+event manager history size events 10
+event manager history size traps 10
+event manager detector rpc max-sessions 4
+event manager detector routing bootup-delay 0
+end

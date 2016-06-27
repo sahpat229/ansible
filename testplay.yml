@@ -1,0 +1,15 @@
+---
+- hosts : ios
+  gather_facts: no
+  connection: local
+  tasks :
+   - name : Run test command on ios device
+     ios_command:
+         host: "{{ inventory_hostname }}"
+         username: cisco
+         password: cisco
+         auth_pass: cisco
+         commands:
+             - show version
+     register: result
+   - debug : var=result.stdout_lines

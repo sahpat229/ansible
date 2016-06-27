@@ -1,0 +1,52 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: OBTAIN LOGIN CREDENTIALS
+    include_vars: secrets.yml
+
+  - name: DEFINE PROVIDER
+    set_fact:
+      provider:
+        host: "{{ ip_addresses[inventory_hostname] }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+        timeout: 20
+      file_name: commands.txt
+
+  #- name: GET FILE CONTENTS
+  #  command: cat {{ file_name }}
+  #  register: list_commands
+
+  #- debug: var={{ list_commands.stdout_lines }}
+
+  - name: RUN CONFIG
+    ios_template:
+      provider: "{{ provider }}"
+      authorize: true
+      backup: true
+      src: config2.txt
+    register: template
+     
+    #debug: var=version.stdout_lines
+    #copy: content="{{ version.stdout_lines }}" dest=/etc/ansible/output{{ inventory_hostname }}.txt
+
+  # - copy: content="{{ item.stdout_lines }}" dest=/etc/ansible/output/{{ inventory_hostname }}.txt
+  #   with_items: result_lines.results
+
+  - debug: var=template
+
+  #- name: RUN 'SHOW IP ROUTE OSPF'
+  #  ios_command:
+  #    provider: "{{ provider }}"
+  #    commands:
+  #      - show ip route ospf
+  #    register: routes
+
+  #- debug: var=version.stdout_lines
+
+  #- name: COPY CONTENT
+   # copy: content="{{ version.stdout_lines }}" dest=/etc/ansible/output/{{ inventory_hostname }}.txt

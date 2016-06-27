@@ -1,0 +1,4 @@
+!
+ip access-list standard TEST2
+ permit host 1.1.1.1
+end

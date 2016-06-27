@@ -1,0 +1,3 @@
+ip_addresses: 
+  cisco1: 192.168.56.2
+  cisco2: 192.168.128.3
