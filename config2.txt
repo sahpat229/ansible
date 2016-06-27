@@ -1,4 +1,119 @@
+service timestamps debug datetime msec
+service timestamps log datetime msec
 !
-ip access-list standard TEST2
- permit host 1.1.1.1
+hostname cisco
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$/ZnZ$FaT6BLerFrm9hbdVeS26B.
+enable password cisco
+!
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain name lookup
+ip domain name test
+ip cef
+no ipv6 cef
+!
+!
+mutlilink bundle-name authenticate
+!
+!
+!
+!
+!
+!
+!
+username cisco password 0 cisco
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+!
+interface FastEthernet0/0
+ ip address 192.168.128.2 255.255.255.0
+ duplex full
+!
+interface FastEthernet1/0
+ ip address 192.168.56.2 255.255.255.0
+ duplex full
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ duplex full
+!
+interface Fast Ethernet3/0
+ no ip address
+ shutdown
+ duplex full
+!
+interface FastEthernet4/0
+ no ip address
+ shutdown
+ duplex full
+!
+router ospf 100
+ network 1.1.1.0 0.0.0.255 area 0
+ network 192.168.56.0 0.0.0.255 area 0
+ network 192.168.128.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ip access-list extended TEST
+ permit ip host 1.2.2.1.1 any
+ deny	ip any any
+!
+
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ transport input ssh
+!
+!
 end
