@@ -1,0 +1,2 @@
+show ip int b
+show ip route ospf

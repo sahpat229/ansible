@@ -48,10 +48,7 @@ def startConnection(host_ip, us, passw):
 	except Exception:
 		print "Error occured in starting shell"
 	else:
-		while(not channel.recv_ready()):
-			pass
-		print channel.recv(1000)
-		print type(channel)
+		time.sleep(0.3)
 		channel.keep_this = client
 		return channel
 
@@ -64,25 +61,35 @@ def input_receive_comm(channel, com):
 	return output
 
 
-def main():
-	usage = "usage: %prog [options] hostname configfile tofile"
-	parser = optparse.OptionParser(usage)
-	parser.add_option("-p", action="store",	help="Password input")
-	parser.add_option("-u", action="store", help="Username input")
-	(options, args) = parser.parse_args(args)
-	password = options.p
-	username = options.u
-	configfile = args[1]
-	hostname = args[0]
-	tofile = args[2]
-	if hostProperFormat(hostname):
-		try:
-			channel = startConnection(hostname, username, password)
-		except 
+# def main():
+# 	usage = "usage: %prog [options] hostname configfile tofile"
+# 	parser = optparse.OptionParser(usage)
+# 	parser.add_option("-p", action="store",	help="Password input")
+# 	parser.add_option("-u", action="store", help="Username input")
+# 	(options, args) = parser.parse_args(args)
+# 	password = options.p
+# 	username = options.u
+# 	configfile = args[1]
+# 	hostname = args[0]
+# 	tofile = args[2]
+# 	if hostProperFormat(hostname):
+# 		try:
+# 			channel = startConnection(hostname, username, password)
+# 		except 
 
-	
-ipaddress = raw_input("HOST IP: ")
+class IPException(Exception):
+	def __init__(self, value):
+		self.value = value
+	def __str__(self):
+		return self.value
 
-ipaddress = validateHost(ipaddress)
-channel = startConnection(ipaddress)
-print input_receive_comm(channel, "show ip int b\n")
+def execute(host_ip, username, password, commands, outputfilename):
+	if hostProperFormat(host_ip):
+		channel = startConnection(host_ip, username, password)
+		with open(outputfilename, 'w+') as outputfile:
+			for command in commands:
+				output_line = input_receive_comm(channel, 
+					(command+"\n")) + "\n"
+				outputfile.write(output_line)
+	else:
+		raise IPException("Host not proper format")
